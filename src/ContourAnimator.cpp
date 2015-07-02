@@ -28,8 +28,25 @@ void ContourAnimator::setup (ofxBlobTracker *bTracker, int w, int h)
 		ofBackground(255);		
 	shaderMask.setMaskEnd();
 
+
+	fboOut1.allocate(w,h,GL_RGBA32F_ARB);
+	fboOut1.begin();
+		ofClear(0,0,0,1);
+	fboOut1.end();
+
+	fboOut2.allocate(w,h,GL_RGBA32F_ARB);
+	fboOut2.begin();
+		ofClear(0,0,0,1);
+	fboOut2.end();
+	ping = &fboOut1;
+	pong = &fboOut2;
+
+	shaderPingPong.load("shaders/pingpong");
+
+	paramAlphaDamping = 0.9f;
     paramNumPuntos = 2000;
     paramNoiseMult = 1;
+
 }
 
 //----------------------------------------------------------------------
@@ -105,7 +122,15 @@ void ContourAnimator::addAnimationHorizontal(int idBlob, int durationMilis, floa
 //
 void ContourAnimator::update()
 {
-    int i = 0;
+    if (paramStop)
+	{
+		for (int i = 0; i < animations.size() ; i++)
+			animations[i].active = false;
+		animations.clear();
+		paramStop = false;
+	}
+	
+	int i = 0;
     while (i < animations.size())
     {
 		if ((animations[i].tipoAnimacion == TIPOA_DESDE_HASTA) && (animations[i].timeDuration < ofGetElapsedTimeMillis() - animations[i].timeStart))
@@ -116,27 +141,64 @@ void ContourAnimator::update()
         else
             i++;
     }
+
+
+
 }
 
 //----------------------------------------------------------------------
 //
 void ContourAnimator::draw()
 {
-	ofBackground(0);
+	//ofBackground(0);
 	ofPushStyle();
 
 	//ofEnableSmoothing();
 
 	ofEnableAntiAliasing();
+	
+	ofEnableAlphaBlending();
+	
+	ping->begin();
+		//ofClear(1,1,1,0);
+		for (int i = 0 ; i < animations.size() ; i++)
+		{
+			if (animations[i].active)
+				drawAnimation(i);
+		}
+	ping->end();
 
-    for (int i = 0 ; i < animations.size() ; i++)
-    {
-        if (animations[i].active)
-			drawAnimation(i);
-    }
 	ofDisableAntiAliasing();
 	//ofDisableSmoothing();
 	ofPopStyle();
+	
+	//ofDisableAlphaBlending();
+
+	pong->begin();
+		shaderPingPong.begin();
+			//shaderPingPong.setUniform1i("kernelSize", paramKernelSize);
+			shaderPingPong.setUniform1f("alphaDamping", paramAlphaDamping);
+			//shader.setUniform1i("velX", paramVelX);
+			//shader.setUniform1i("velY", paramVelY);
+			ping->draw(0,0);
+		shaderPingPong.end();
+	pong->end();
+
+
+
+
+	ofDisableAlphaBlending();
+	ofSetColor(255);
+	pong->draw(0,0);
+
+	swap(ping, pong);
+
+	//ofEnableAlphaBlending();
+	//fboOut.begin();
+	//fboOut.end();
+
+	ofNoFill();
+
 }
 
 //----------------------------------------------------------------------
@@ -188,7 +250,9 @@ void ContourAnimator::drawAnimation( int idAnimation )
 				drawVertical(idAnimation);
 			shaderMask.drawEnd();
 			ofSetColor(255);
+			
 			shaderMask.draw();
+			
 			if (getUnifiedContour(animations[idAnimation].idFrom, poly1, 400))
 				poly1.draw();
 

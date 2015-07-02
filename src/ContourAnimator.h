@@ -4,6 +4,7 @@
 #include "ofMain.h"
 #include "ofxBlobTracker.h"
 #include "ShaderMask.h"
+#include "ofxGui.h"
 
 class ContourAnimator
 {
@@ -21,8 +22,10 @@ class ContourAnimator
         ContourAnimator();
         virtual ~ContourAnimator();
 
-        int     paramNumPuntos;
-        float   paramNoiseMult;
+		ofxToggle		paramStop;
+        ofxIntSlider    paramNumPuntos;
+        ofxFloatSlider  paramNoiseMult;
+		ofxFloatSlider	paramAlphaDamping;
 
     protected:
 
@@ -51,23 +54,27 @@ class ContourAnimator
 
         struct ANIMATION
         {
-			TIPOANIMACION tipoAnimacion;
-            int idFrom;
-            int idTo;
-            double timeStart;
-            bool active;
-            float timeDuration;
-            ofPolyline polyActual;
-			float velocidad;
-            //float dist;
+			TIPOANIMACION	tipoAnimacion;
+            int				idFrom;
+            int				idTo;
+            double			timeStart;
+            bool			active;
+            float			timeDuration;
+            ofPolyline		polyActual;
+			float			velocidad;
         };
 
-        vector<ANIMATION> animations;
+        vector<ANIMATION>	animations;
 
-        ofxBlobTracker *blobTracker;
+        ofxBlobTracker		*blobTracker;
 
-		ShaderMask		shaderMask;
+		ShaderMask			shaderMask;
+		ofFbo				fboOut1;
+		ofFbo				fboOut2;
+		ofFbo				*ping;
+		ofFbo				*pong;
 
+		ofShader			shaderPingPong;
 
        // int cuenta;
        // int timeCuenta;

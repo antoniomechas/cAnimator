@@ -30,22 +30,35 @@ void ofApp::setup(){
     imagen.threshold(100);
     contourManager.setup(ofGetWidth(), ofGetHeight());
     contourAnimator.setup(&contourManager.blobTracker, ofGetWidth(), ofGetHeight());
+
+	gui.setup("");
+	gui.add(contourAnimator.paramStop.setup("Stop",false));
+	gui.add(contourAnimator.paramNumPuntos.setup("num Puntos",1000, 20, 2000));
+	gui.add(contourAnimator.paramNoiseMult.setup("noise mult",0.01, 0.01, 10));
+	gui.add(contourAnimator.paramAlphaDamping.setup("alpha damping",0.01, 0.1, 1.0));
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     contourManager.update(imagen);
     contourAnimator.update();
-
+	//ofSetBackgroundAuto(false);
+	//ofSetBackgroundColor(0);
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    //contourImg1.draw(0,0);
+	//ofSetBackgroundColor(0);
+	//contourImg1.draw(0,0);
     //contourImg2.draw(ofGetWidth()/2, 0);
     //imagen.draw(0,0);
+	//ofSetColor(0);
     //contourManager.draw(0,0);
-    contourAnimator.draw();
+    //ofCircle(ofPoint(100,100),ofRandom(200));
+	contourAnimator.draw();
+	
+	ofSetColor(255);
+	gui.draw();
 }
 
 //--------------------------------------------------------------

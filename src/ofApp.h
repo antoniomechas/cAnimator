@@ -36,4 +36,6 @@ class ofApp : public ofBaseApp{
 
         ContourAnimator contourAnimator;
 
+		ofxPanel			gui;
+
 };

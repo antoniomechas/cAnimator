@@ -159,45 +159,47 @@ void ContourAnimator::draw()
 	
 	ofEnableAlphaBlending();
 	
-	ping->begin();
-		//ofClear(1,1,1,0);
+	if (paramPingPong)
+	{
+		ping->begin();
+			//ofClear(1,1,1,0);
+			for (int i = 0 ; i < animations.size() ; i++)
+			{
+				if (animations[i].active)
+					drawAnimation(i);
+			}
+		ping->end();
+
+		ofDisableAntiAliasing();
+		//ofDisableSmoothing();
+		ofPopStyle();
+	
+		//ofDisableAlphaBlending();
+
+		pong->begin();
+			shaderPingPong.begin();
+				//shaderPingPong.setUniform1i("kernelSize", paramKernelSize);
+				shaderPingPong.setUniform1f("alphaDamping", paramAlphaDamping);
+				//shader.setUniform1i("velX", paramVelX);
+				//shader.setUniform1i("velY", paramVelY);
+				ping->draw(0,0);
+			shaderPingPong.end();
+		pong->end();
+
+		ofDisableAlphaBlending();
+		ofSetColor(255);
+		pong->draw(0,0);
+
+		swap(ping, pong);
+	}
+	else
+	{
 		for (int i = 0 ; i < animations.size() ; i++)
 		{
 			if (animations[i].active)
 				drawAnimation(i);
 		}
-	ping->end();
-
-	ofDisableAntiAliasing();
-	//ofDisableSmoothing();
-	ofPopStyle();
-	
-	//ofDisableAlphaBlending();
-
-	pong->begin();
-		shaderPingPong.begin();
-			//shaderPingPong.setUniform1i("kernelSize", paramKernelSize);
-			shaderPingPong.setUniform1f("alphaDamping", paramAlphaDamping);
-			//shader.setUniform1i("velX", paramVelX);
-			//shader.setUniform1i("velY", paramVelY);
-			ping->draw(0,0);
-		shaderPingPong.end();
-	pong->end();
-
-
-
-
-	ofDisableAlphaBlending();
-	ofSetColor(255);
-	pong->draw(0,0);
-
-	swap(ping, pong);
-
-	//ofEnableAlphaBlending();
-	//fboOut.begin();
-	//fboOut.end();
-
-	ofNoFill();
+	}
 
 }
 
@@ -342,7 +344,7 @@ void ContourAnimator::drawHorizontal( int idAnimation )
 
 
 //----------------------------------------------------------------------
-//Linea vertical de izq a derecha
+//de dentro pa fuera y viceversa
 //
 void ContourAnimator::drawRadial( int idAnimation )
 {
@@ -369,6 +371,7 @@ void ContourAnimator::drawRadial( int idAnimation )
 	for (int i = 0 ; i < poly1.size() ; i++)
 	{
 		poly1[i] -= centroid;
+		poly1[i] += ofPoint(ofSignedNoise(i, ofGetElapsedTimeMillis() * paramNoiseFreq) * paramNoiseMult, ofSignedNoise(ofGetElapsedTimeMillis() * paramNoiseFreq, i)* paramNoiseMult);
 	}
 
 	for ( int k = 0 ; k < numContornos ; k++)
@@ -380,6 +383,36 @@ void ContourAnimator::drawRadial( int idAnimation )
 		poly1.draw();
 		ofPopMatrix();
 	}
+
+
+}
+
+
+//----------------------------------------------------------------------
+//Dibuja el contorno con una forma sinusoidal
+//
+void ContourAnimator::drawContourOnda( int idAnimation )
+{
+	ofPoint pos;
+    int index = -1;
+	int idBlob = animations[idAnimation].idFrom;
+	for (int i = 0 ; i < blobTracker->trackedBlobs.size() ; i++)
+    {
+        if (blobTracker->trackedBlobs[i].id == idBlob)
+			index = i;
+    }
+	if (index == -1)
+		return;
+
+	ofPolyline poly1;
+	if (!getUnifiedContour(animations[idAnimation].idFrom, poly1, 400))
+		return;
+
+	for (int i = 0 ; i < poly1.size() ; i++)
+	{
+		
+	}
+
 
 
 }
@@ -539,8 +572,8 @@ void ContourAnimator::dampPoly(ofPolyline &pAct, ofPolyline &pDst, float paramDa
 void ContourAnimator::drawLine(ofPoint p1, ofPoint p2, int idAnimacion)
 {
 	int numDiv = 200;
-	float amplitude = 8.0;
-	float speed = 0.01f;
+	float amplitude = paramNoiseMult;
+	float speed = paramNoiseFreq;
 
 	ofPolyline poly;
 	poly.addVertex(p1);

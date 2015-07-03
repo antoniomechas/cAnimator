@@ -34,7 +34,9 @@ void ofApp::setup(){
 	gui.setup("");
 	gui.add(contourAnimator.paramStop.setup("Stop",false));
 	gui.add(contourAnimator.paramNumPuntos.setup("num Puntos",1000, 20, 2000));
+	gui.add(contourAnimator.paramNoiseFreq.setup("noise freq",0.001, 0.001, 10));
 	gui.add(contourAnimator.paramNoiseMult.setup("noise mult",0.01, 0.01, 10));
+	gui.add(contourAnimator.paramPingPong.setup("Ping Pong",false));
 	gui.add(contourAnimator.paramAlphaDamping.setup("alpha damping",0.01, 0.1, 1.0));
 }
 
@@ -68,10 +70,10 @@ void ofApp::keyPressed(int key){
         //contourAnimator.animateFromTo(contourManager.blobTracker[0].id, contourManager.blobTracker[1].id);
 		contourAnimator.addAnimationVertical(contourManager.blobTracker[1].id, 0, ofRandom(0.01,1.0));
 		contourAnimator.addAnimationHorizontal(contourManager.blobTracker[1].id, 0, ofRandom(0.01,1.0));
+		contourAnimator.addAnimationRadial(contourManager.blobTracker[1].id, 0, ofRandom(0.01,1.0));
 
 		//contourAnimator.addAnimationVertical(contourManager.blobTracker[0].id, 0, ofRandom(0.01,1.0));
-		contourAnimator.addAnimationRadial(contourManager.blobTracker[0].id, 0, ofRandom(0.01,1.0));
-        //contourAnimator.animateFromTo(contourManager.blobTracker[1].id, contourManager.blobTracker[0].id);
+        contourAnimator.animateFromTo(contourManager.blobTracker[1].id, contourManager.blobTracker[0].id);
         cout << "blob desde = " << contourManager.blobTracker[0].id << ", blob hasta =" << contourManager.blobTracker[1].id << endl;
     }
 }

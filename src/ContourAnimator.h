@@ -23,7 +23,9 @@ class ContourAnimator
         virtual ~ContourAnimator();
 
 		ofxToggle		paramStop;
+		ofxToggle		paramPingPong;
         ofxIntSlider    paramNumPuntos;
+        ofxFloatSlider  paramNoiseFreq;
         ofxFloatSlider  paramNoiseMult;
 		ofxFloatSlider	paramAlphaDamping;
 
@@ -39,6 +41,7 @@ class ContourAnimator
 		void	drawVertical		( int idAnimation );
 		void	drawHorizontal		( int idAnimation );
 		void	drawRadial			( int idAnimation );
+		void	drawContourOnda		( int idAnimation );
 		void	drawLine			( ofPoint p1, ofPoint p2, int idAnimacion = 0);
 
         float width;

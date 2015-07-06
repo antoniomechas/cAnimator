@@ -28,6 +28,7 @@ class ContourAnimator
         ofxFloatSlider  paramNoiseFreq;
         ofxFloatSlider  paramNoiseMult;
 		ofxFloatSlider	paramAlphaDamping;
+		ofxFloatSlider	paramSmooth;
 
     protected:
 

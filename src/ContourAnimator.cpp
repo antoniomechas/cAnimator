@@ -25,7 +25,7 @@ void ContourAnimator::setup (ofxBlobTracker *bTracker, int w, int h)
 	shaderMask.setup( w, h);
 	shaderMask.setMaskBegin();
 		ofClear(1,1,1,1);
-		ofBackground(255);		
+		//ofBackground(255);		
 	shaderMask.setMaskEnd();
 
 
@@ -59,7 +59,7 @@ void ContourAnimator::animateFromTo(int idFrom, int idTo)
     a.idTo = idTo;
     a.timeStart = ofGetElapsedTimeMillis();
     a.active = true;
-    a.timeDuration = 5000 + ofRandom(0,4000);
+    a.timeDuration = ofRandom(300,1000);
     animations.push_back(a);
     //cuenta = 0;
     //timeCuenta = ofGetElapsedTimeMillis();
@@ -422,7 +422,7 @@ void ContourAnimator::drawContourOnda( int idAnimation )
 //
 void ContourAnimator::drawDesdeHasta( int idAnimation )
 {
-	paramNumPuntos = 700 + ofNoise(idAnimation, ofGetElapsedTimef() * 0.1) * 50;
+	//paramNumPuntos = 700 + ofNoise(idAnimation, ofGetElapsedTimef() * 0.1) * 50;
     ofPolyline poly1;
     if (!getUnifiedContour(animations[idAnimation].idFrom, poly1, paramNumPuntos))
         return;
@@ -434,14 +434,24 @@ void ContourAnimator::drawDesdeHasta( int idAnimation )
     ofSetColor(0,255,0);
     drawPoly(poly2);
     ofPolyline polyDst;
+	ofPoint puntoAnt(-1,-1);
     for (int k = 0 ; k < poly1.size() ; k++)
     {
         float timeElapsed = ofGetElapsedTimeMillis() - animations[idAnimation].timeStart;
         float pct = ofMap(timeElapsed, 0, animations[idAnimation].timeDuration,0,1);
         ofPoint punto = getInterpolated(poly1[k],poly2[k],pct);
-        punto.x = punto.x + ofSignedNoise(k,ofGetElapsedTimef()) * paramNoiseMult;
-        punto.y = punto.y + ofSignedNoise(ofGetElapsedTimef(),k) * paramNoiseMult;
+        if (puntoAnt.x != -1)
+		{
+			ofVec2f dir = punto-puntoAnt;
+			dir.normalize();
+			punto = punto + dir * ofSignedNoise(k, ofGetElapsedTimef() * paramNoiseFreq) * paramNoiseMult;
+			//punto.x = punto.x + ofSignedNoise(k,ofGetElapsedTimef()) * paramNoiseMult;
+			//punto.y = punto.y + ofSignedNoise(ofGetElapsedTimef(),k) * paramNoiseMult;
+		
+		}
+		
         polyDst.addVertex(punto);
+		puntoAnt = punto;
         //ofLine(poly1[k],poly2[k]);
     }
     ofSetColor(255);
@@ -526,12 +536,14 @@ void ContourAnimator::drawPoly(ofPolyline &poly)
 //        ofCircle(poly[i],1);
 //    }
     ofPolyline poly2;
-    for (int i = 0 ; i < poly.size(); i++)
+	poly2.addVertex(poly[0]);
+	for (int i = 0 ; i < poly.size(); i++)
     {
         poly2.curveTo(poly[i]);
     }
-    poly2.curveTo(poly[poly.size()-1]);
-    poly2.getSmoothed(30);
+    poly2.curveTo(poly[0]);
+    poly2.curveTo(poly[0]);
+    poly2.getSmoothed(paramSmooth);
     poly2.draw();
 //    poly.draw();
 }

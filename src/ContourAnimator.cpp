@@ -46,6 +46,8 @@ void ContourAnimator::setup (ofxBlobTracker *bTracker, int w, int h)
 	paramAlphaDamping = 0.9f;
     paramNumPuntos = 2000;
     paramNoiseMult = 1;
+	paramRayoMinDist = 4;
+	paramRayoMult = 1;
 
 }
 
@@ -53,7 +55,7 @@ void ContourAnimator::setup (ofxBlobTracker *bTracker, int w, int h)
 //
 void ContourAnimator::animateFromTo(int idFrom, int idTo)
 {
-    ANIMATION a;
+    C_ANIMATION a;
 	a.tipoAnimacion = TIPOANIMACION::TIPOA_DESDE_HASTA;
     a.idFrom = idFrom;
     a.idTo = idTo;
@@ -69,7 +71,7 @@ void ContourAnimator::animateFromTo(int idFrom, int idTo)
 //
 void ContourAnimator::addAnimationRadial(int idBlob, int durationMilis, float velocidad)
 {
-    ANIMATION a;
+    C_ANIMATION a;
 	a.tipoAnimacion = TIPOANIMACION::TIPOA_RADIAL;
     a.idFrom = idBlob;
     a.idTo = 0;
@@ -86,7 +88,7 @@ void ContourAnimator::addAnimationRadial(int idBlob, int durationMilis, float ve
 //
 void ContourAnimator::addAnimationVertical(int idBlob, int durationMilis, float velocidad)
 {
-    ANIMATION a;
+    C_ANIMATION a;
 	a.tipoAnimacion = TIPOANIMACION::TIPOA_VERTICAL;
     a.idFrom = idBlob;
     a.idTo = 0;
@@ -104,7 +106,7 @@ void ContourAnimator::addAnimationVertical(int idBlob, int durationMilis, float 
 //
 void ContourAnimator::addAnimationHorizontal(int idBlob, int durationMilis, float velocidad)
 {
-    ANIMATION a;
+    C_ANIMATION a;
 	a.tipoAnimacion = TIPOANIMACION::TIPOA_HORIZONTAL;
     a.idFrom = idBlob;
     a.idTo = 0;
@@ -116,6 +118,25 @@ void ContourAnimator::addAnimationHorizontal(int idBlob, int durationMilis, floa
     //cuenta = 0;
 
 }
+
+//----------------------------------------------------------------------
+//
+void ContourAnimator::addAnimationRayos(int idBlob, ofPoint origen, int durationMilis, float velocidad)
+{
+    C_ANIMATION a;
+	a.tipoAnimacion = TIPOANIMACION::TIPOA_RAYOS;
+    a.punto = origen;
+	a.idFrom = idBlob;
+    a.idTo = 0;
+    a.timeStart = ofGetElapsedTimeMillis();
+    a.active = true;
+    a.timeDuration = durationMilis;
+	a.velocidad = velocidad;
+    animations.push_back(a);
+    //cuenta = 0;
+
+}
+
 
 
 //----------------------------------------------------------------------
@@ -148,7 +169,7 @@ void ContourAnimator::update()
 
 //----------------------------------------------------------------------
 //
-void ContourAnimator::draw()
+void ContourAnimator::draw(ofFbo *fboOut)
 {
 	//ofBackground(0);
 	ofPushStyle();
@@ -168,6 +189,7 @@ void ContourAnimator::draw()
 				if (animations[i].active)
 					drawAnimation(i);
 			}
+			drawRayo(ofPoint(100,100), ofPoint(800,200));
 		ping->end();
 
 		ofDisableAntiAliasing();
@@ -188,18 +210,26 @@ void ContourAnimator::draw()
 
 		ofDisableAlphaBlending();
 		ofSetColor(255);
-		pong->draw(0,0);
+		
+		fboOut->begin();
+			pong->draw(0,0);
+		fboOut->end();
 
 		swap(ping, pong);
 	}
 	else
 	{
-		for (int i = 0 ; i < animations.size() ; i++)
-		{
-			if (animations[i].active)
-				drawAnimation(i);
-		}
+		fboOut->begin();
+			ofClear(0,1);
+			for (int i = 0 ; i < animations.size() ; i++)
+			{
+				if (animations[i].active)
+					drawAnimation(i);
+			}
+		fboOut->end();
+		//drawRayo(ofPoint(100,100), ofPoint(800,200));
 	}
+
 
 }
 
@@ -242,6 +272,10 @@ void ContourAnimator::drawAnimation( int idAnimation )
 
 		case TIPOA_RADIAL:
 			drawRadial(idAnimation);
+			break;
+
+		case TIPOA_RAYOS:
+			drawContourRayos(idAnimation);
 			break;
 
 		case TIPOA_VERTICAL:
@@ -365,7 +399,7 @@ void ContourAnimator::drawRadial( int idAnimation )
 	float t = (ofGetElapsedTimeMillis() - animations[idAnimation].timeStart) * animations[idAnimation].velocidad * 0.001f;
 	float numContornos = 8;
 	ofPolyline poly1;
-	if (!getUnifiedContour(animations[idAnimation].idFrom, poly1, 400))
+	if (!getUnifiedContour(animations[idAnimation].idFrom, poly1, paramNumPuntos))
 		return;
 	poly1.draw();
 	for (int i = 0 ; i < poly1.size() ; i++)
@@ -405,7 +439,7 @@ void ContourAnimator::drawContourOnda( int idAnimation )
 		return;
 
 	ofPolyline poly1;
-	if (!getUnifiedContour(animations[idAnimation].idFrom, poly1, 400))
+	if (!getUnifiedContour(animations[idAnimation].idFrom, poly1, paramNumPuntos))
 		return;
 
 	for (int i = 0 ; i < poly1.size() ; i++)
@@ -417,6 +451,34 @@ void ContourAnimator::drawContourOnda( int idAnimation )
 
 }
 
+//----------------------------------------------------------------------
+// Dibuja rayos que surgen desde un punto fijo hacia el contorno
+//
+void ContourAnimator::drawContourRayos( int idAnimation )
+{
+	ofPoint pos;
+    int index = -1;
+	int idBlob = animations[idAnimation].idFrom;
+	for (int i = 0 ; i < blobTracker->trackedBlobs.size() ; i++)
+    {
+        if (blobTracker->trackedBlobs[i].id == idBlob)
+			index = i;
+    }
+	if (index == -1)
+		return;
+
+	ofPolyline poly1;
+	if (!getUnifiedContour(animations[idAnimation].idFrom, poly1, paramNumPuntos))
+		return;
+	//poly1.draw();
+	for (int i = 0 ; i < poly1.size() ; i++)
+	{
+		drawRayo(animations[idAnimation].punto, poly1[i]);
+	}
+
+
+
+}
 
 //----------------------------------------------------------------------
 //
@@ -474,6 +536,37 @@ void ContourAnimator::drawDesdeHasta( int idAnimation )
     //}
 
 }
+
+//----------------------------------------------------------------------
+//Dibuja un rayo entre los dos puntos especificados
+//
+void ContourAnimator::drawRayo(ofPoint p1, ofPoint p2)
+{
+	for (int i = 0 ; i < paramRayoNumRayos ; i++)
+		drawRayoRec(p1, p2, paramRayoDisplace);
+}
+
+void ContourAnimator::drawRayoRec(ofPoint p1, ofPoint p2, float displace)
+{
+	if (displace < paramRayoMinDist)
+	{	
+		ofLine(p1,p2);
+	}
+	else
+	{
+		ofVec2f v = p2-p1;
+		ofPoint p3 = p2.getMiddle(p1);
+	
+		ofVec2f vp = v.perpendicular();
+		vp.normalize();
+		//p1 = p1 + vp * ofRandom(-paramRayoMult,paramRayoMult) * displace;
+		//p2 = p2 + vp * ofRandom(-paramRayoMult,paramRayoMult) * displace;
+		p3 = p3 + vp * ofRandom(-paramRayoMult,paramRayoMult) * displace;
+		drawRayoRec(p1,p3, displace / 2);
+		drawRayoRec(p3,p2, displace / 2);
+	}
+}
+
 
 //----------------------------------------------------------------------
 //

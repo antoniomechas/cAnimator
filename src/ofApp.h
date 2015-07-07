@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ContourManager.h"
 #include "ContourAnimator.h"
+#include "ofxFilterLibrary.h"
 
 class ofApp : public ofBaseApp{
 
@@ -38,4 +39,7 @@ class ofApp : public ofBaseApp{
 
 		ofxPanel			gui;
 
+		ofFbo				fboOut;
+
+		vector<AbstractFilter *>    _filters;
 };

@@ -39,6 +39,23 @@ void ofApp::setup(){
 	gui.add(contourAnimator.paramPingPong.setup("Ping Pong",false));
 	gui.add(contourAnimator.paramAlphaDamping.setup("alpha damping",0.01, 0.1, 1.0));
 	gui.add(contourAnimator.paramSmooth.setup("smooth",1, 0.0, 10.0));
+	gui.add(contourAnimator.paramRayoNumRayos.setup("Rayo Num Rayos",1, 1, 20));
+	gui.add(contourAnimator.paramRayoDisplace.setup("Rayo Displace",1, 1, 200));
+	gui.add(contourAnimator.paramRayoMinDist.setup("Rayo MinDist",1, 1, 50));
+	gui.add(contourAnimator.paramRayoMult.setup("Rayo Mult",1, 0.01, 10));
+
+	
+	ofDisableArbTex();
+	fboOut.allocate(ofGetWidth(), ofGetHeight(),GL_RGBA32F);
+	//FilterChain * charcoal = new FilterChain(ofGetWidth(), ofGetHeight(), "Charcoal");
+ //   //charcoal->addFilter(new BilateralFilter(_video.getWidth(), _video.getHeight(), 4, 4));
+ //   charcoal->addFilter(new GaussianBlurFilter(ofGetWidth(), ofGetHeight(), 2.f ));
+ //   //charcoal->addFilter(new DoGFilter(ofGetWidth(), ofGetHeight(), 12, 1.2, 8, 0.99, 4));
+ //   _filters.push_back(charcoal);
+    _filters.push_back(new KuwaharaFilter(6));
+
+	ofEnableArbTex();
+
 }
 
 //--------------------------------------------------------------
@@ -47,6 +64,7 @@ void ofApp::update(){
     contourAnimator.update();
 	//ofSetBackgroundAuto(false);
 	//ofSetBackgroundColor(0);
+	ofSetWindowTitle(ofToString(ofGetFrameRate()) + " FPS");
 }
 
 //--------------------------------------------------------------
@@ -58,7 +76,21 @@ void ofApp::draw(){
 	//ofSetColor(0);
     //contourManager.draw(0,0);
     //ofCircle(ofPoint(100,100),ofRandom(200));
-	contourAnimator.draw();
+	
+	contourAnimator.draw(&fboOut);
+    
+	ofEnableAlphaBlending();	
+	
+	ofDisableArbTex();
+    ofPushMatrix();
+    ofScale(-1, 1);
+    ofTranslate(-ofGetWidth(), 0);
+    _filters[0]->begin();
+	fboOut.draw(0,0);
+    _filters[0]->end();
+    ofPopMatrix();
+	ofEnableArbTex();
+
 	
 	ofSetColor(255);
 	gui.draw();
@@ -74,7 +106,16 @@ void ofApp::keyPressed(int key){
 		//contourAnimator.addAnimationRadial(contourManager.blobTracker[1].id, 0, ofRandom(0.01,1.0));
 
 		//contourAnimator.addAnimationVertical(contourManager.blobTracker[0].id, 0, ofRandom(0.01,1.0));
-        contourAnimator.animateFromTo(contourManager.blobTracker[1].id, contourManager.blobTracker[0].id);
+        if (key == 'f')
+			contourAnimator.animateFromTo(contourManager.blobTracker[1].id, contourManager.blobTracker[0].id);
+
+		if (key == 'r')
+		{
+			ofPoint p(ofGetWidth() / 2, ofGetHeight() /2);
+			p.x = p.x + ofSignedNoise(ofGetElapsedTimeMillis()) * 100;
+			p.y = p.y + ofSignedNoise(10, ofGetElapsedTimeMillis()) * 100;
+			contourAnimator.addAnimationRayos(contourManager.blobTracker[1].id, p	);
+		}
         cout << "blob desde = " << contourManager.blobTracker[0].id << ", blob hasta =" << contourManager.blobTracker[1].id << endl;
     }
 }

@@ -85,6 +85,210 @@
     <ClCompile Include="src\ShaderMask.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\cloth\ofxKCloth.cpp">
+      <Filter>src\cloth</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cloth\ofxKMesh.cpp">
+      <Filter>src\cloth</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\Abstract3x3ConvolutionFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\Abstract3x3PingPongFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\Abstract3x3TextureSamplingFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\AbstractDoGFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\AbstractFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\AbstractPingPongRenderer.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\AbstractTwoInputCrossTextureSamplingFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\AbstractTwoInputFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\AdditiveBlendFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\AlphaBlendFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\AverageColorFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\BilateralFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\BrightnessFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\CGAColorspaceFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\ColorBlendFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\ColorBurnFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\ColorMatrixFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\ColorPackingFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\ColorReplacementFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\ContrastFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\CornerDetectionFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\CrosshatchFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\DarkenBlendFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\DilationFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\DirectionalDoGFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\DisplacementFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\DissolveBlendFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\DoGFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\EdgeTangentFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\EdgeTangentSmoothingFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\EmbossFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\ErosionFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\ExclusionBlendFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\FilterChain.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\FlowDoGFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\GammaFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\GaussianBlurFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\GradientMapFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\GrayscaleFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\HalftoneFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\HarrisCornerDetectionFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\HueFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\KuwaharaFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\LaplacianFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\LookupFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\LowPassFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\MotionDetectionFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\MultiplyBlendFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\NormalBlendFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\PerlinNoiseFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\PerlinPixellationFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\PixelateFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\PoissonBlendFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\PosterizeFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\SaturationFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\SketchFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\SmoothToonFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\SobelEdgeDetectionFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\ThresholdedNonMaximumSuppressionFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\TiltShiftFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\ToonFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\VignetteFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\VoronoiFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\XYDerivativeFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\filters\ZoomBlurFilter.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFilterLibrary\src\parameters\ParametricObject.cpp">
+      <Filter>addons\ofxFilter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -176,6 +380,12 @@
     </Filter>
     <Filter Include="addons\ofxContourAnalysis">
       <UniqueIdentifier>{b763fc3d-5751-4379-9ff1-1f464bed2116}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\cloth">
+      <UniqueIdentifier>{abb55ec2-a8bc-4f2a-8c64-9e764e45d2b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFilter">
+      <UniqueIdentifier>{e1f9709e-9b21-4684-b5d8-5f76eab4fe1b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -523,6 +733,246 @@
     </ClInclude>
     <ClInclude Include="src\ShaderMask.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cloth\ofxKCloth.h">
+      <Filter>src\cloth</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cloth\ofxKMesh.h">
+      <Filter>src\cloth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\Abstract3x3ConvolutionFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\Abstract3x3PingPongFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\Abstract3x3TextureSamplingFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\AbstractDoGFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\AbstractFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\AbstractPingPongRenderer.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\AbstractTwoInputCrossTextureSamplingFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\AbstractTwoInputFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\AdditiveBlendFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\AlphaBlendFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\AverageColorFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\BilateralFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\BrightnessFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\CGAColorspaceFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\ColorBlendFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\ColorBurnFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\ColorMatrixFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\ColorPackingFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\ColorReplacementFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\ContrastFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\CornerDetectionFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\CrosshatchFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\DarkenBlendFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\DilationFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\DirectionalDoGFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\DisplacementFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\DissolveBlendFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\DoGFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\EdgeTangentFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\EdgeTangentSmoothingFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\EmbossFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\ErosionFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\ExclusionBlendFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\FilterChain.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\FlowDoGFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\GammaFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\GaussianBlurFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\GradientMapFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\GrayscaleFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\HalftoneFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\HarrisCornerDetectionFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\HueFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\KuwaharaFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\LaplacianFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\LookupFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\LowPassFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\MotionDetectionFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\MultiplyBlendFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\NormalBlendFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\PerlinNoiseFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\PerlinPixellationFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\PixelateFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\PoissonBlendFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\PosterizeFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\SaturationFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\SketchFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\SmoothToonFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\SobelEdgeDetectionFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\ThresholdedNonMaximumSuppressionFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\TiltShiftFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\ToonFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\VignetteFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\VoronoiFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\XYDerivativeFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\filters\ZoomBlurFilter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\ofxFilterLibrary.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\AbstractParameter.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\Parameter2f.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\Parameter2fv.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\Parameter3f.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\Parameter3fv.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\Parameter4f.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\ParameterF.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\ParameterI.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\ParameterMatrix4f.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\ParameterT.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\ParameterV.h">
+      <Filter>addons\ofxFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFilterLibrary\src\parameters\ParametricObject.h">
+      <Filter>addons\ofxFilter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

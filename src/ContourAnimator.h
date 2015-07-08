@@ -26,6 +26,7 @@ class ContourAnimator
 
 		ofxToggle		paramStop;
 		ofxToggle		paramPingPong;
+        ofxIntSlider    paramPingPongStep;
         ofxIntSlider    paramNumPuntos;
         ofxFloatSlider  paramNoiseFreq;
         ofxFloatSlider  paramNoiseMult;
@@ -94,6 +95,8 @@ class ContourAnimator
 
 		ClothController		clothController;
         
+		int					ticks;
+
        // int cuenta;
        // int timeCuenta;
 

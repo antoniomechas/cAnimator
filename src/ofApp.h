@@ -11,6 +11,9 @@ class ofApp : public ofBaseApp{
 		void setup();
 		void update();
 		void draw();
+		void exit();
+
+		void setupGui();
 
 		void keyPressed(int key);
 		void keyReleased(int key);
@@ -22,24 +25,40 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
+
     protected:
 
-        ContourManager contourManager;
+		void toggleFilterPressed	( bool & value);
+		void setupFilters			( );
 
-        ofImage img1;
-        ofImage img2;
-        ofxCvColorImage colorImg1;
-        ofxCvColorImage colorImg2;
-        ofxCvGrayscaleImage contourImg1;
-        ofxCvGrayscaleImage contourImg2;
+		ContourManager				contourManager;
 
-        ofxCvGrayscaleImage imagen;
+		ofImage						img1;
+		ofImage						img2;
+		ofxCvColorImage				colorImg1;
+		ofxCvColorImage				colorImg2;
+		ofxCvGrayscaleImage			contourImg1;
+		ofxCvGrayscaleImage			contourImg2;
 
-        ContourAnimator contourAnimator;
+		ofxCvGrayscaleImage			imagen;
 
-		ofxPanel			gui;
+		ContourAnimator				contourAnimator;
 
-		ofFbo				fboOut;
+		ofxPanel					gui;
+		ofxPanel					guiFilters;
 
+
+		ofFbo						fboOut;
+
+		FilterChain					*fc;
+		vector<string>				filterNames;
+		vector<ofxToggle *>			filterToggles;
 		vector<AbstractFilter *>    _filters;
+		ofImage						img;
+
+
+		vector<AbstractFilter *>    _filtersTmp;
+
+		int							width;
+		int							height;
 };

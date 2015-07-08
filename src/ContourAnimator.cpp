@@ -48,6 +48,9 @@ void ContourAnimator::setup (ofxBlobTracker *bTracker, int w, int h)
     paramNoiseMult = 1;
 	paramRayoMinDist = 4;
 	paramRayoMult = 1;
+	paramPingPongStep = 1;
+
+	ticks = 0;
 
 }
 
@@ -199,13 +202,21 @@ void ContourAnimator::draw(ofFbo *fboOut)
 		//ofDisableAlphaBlending();
 
 		pong->begin();
-			shaderPingPong.begin();
-				//shaderPingPong.setUniform1i("kernelSize", paramKernelSize);
-				shaderPingPong.setUniform1f("alphaDamping", paramAlphaDamping);
-				//shader.setUniform1i("velX", paramVelX);
-				//shader.setUniform1i("velY", paramVelY);
+			int s = paramPingPongStep;
+			if ( (++ticks % s) == 0 || s == 1)
+			{
+				shaderPingPong.begin();
+					//shaderPingPong.setUniform1i("kernelSize", paramKernelSize);
+					shaderPingPong.setUniform1f("alphaDamping", paramAlphaDamping);
+					//shader.setUniform1i("velX", paramVelX);
+					//shader.setUniform1i("velY", paramVelY);
+					ping->draw(0,0);
+				shaderPingPong.end();
+			}
+			else
+			{
 				ping->draw(0,0);
-			shaderPingPong.end();
+			}
 		pong->end();
 
 		ofDisableAlphaBlending();
@@ -214,8 +225,9 @@ void ContourAnimator::draw(ofFbo *fboOut)
 		fboOut->begin();
 			pong->draw(0,0);
 		fboOut->end();
-
+	
 		swap(ping, pong);
+
 	}
 	else
 	{
